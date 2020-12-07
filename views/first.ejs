@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SyncM App</title>
+</head>
+
+<body>
+
+    <h3>For creating Room</h3>
+    <form action="/createRoom" method="POST">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Enter username..." required />
+        <button type="submit" class="btn">creatRoom</button>
+    </form>
+
+    <h3>For joining Room</h3>
+    <form action="/joinRoom" method="POST">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Enter username..." required />
+        <label for="roomid">RoomId</label>
+        <input type="text" name="roomid" id="roomid" placeholder="Enter roomid..." required />
+        <button type="submit" class="btn">joinRoom</button>
+    </form>
+</body>
+
+</html>

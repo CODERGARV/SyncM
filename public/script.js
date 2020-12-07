@@ -1,30 +1,30 @@
-// const socket = io.connect("http://localhost:3001");
+console.log("hlo therer")
 const socket = io();
-
 function handleplaysound(){
-    console.log("clicked hps");
-    // io.sockets.emit('play',{ name : "playing test sound"});
-    // io.sockets.emit('broadcast',{ description: ' clients connected!'});
-    socket.emit('clientEvent', 'Sent an event from the client!');
+    console.log("clicked playsound");
+    socket.emit('clientEvent', 'Sent an event from the client by play button!');
 
 };
+
+function handlepausesound(){
+    console.log("clicked pausesound");
+    socket.emit('clientEventPause', 'Sent an event from the client by pause button!');
+
+};
+
 socket.on('playonall',msg =>{
     console.log("hlo garv, wait for 2 sec");
     console.log(msg);
 
     var x = document.getElementById("myAudio");
+    x.currentTime=0;
+    x.play();
+});
+socket.on('pauseonall',msg =>{
+    console.log("hlo garv, your song is going to paused, wait for 2 sec");
+    console.log(msg);
 
-    setTimeout(()=>{
-        x.currentTime=0;
-        x.play();
-    },2000);
+    var x = document.getElementById("myAudio");
+    x.currentTime=0;
+    x.pause();
 })
-// socket.on('playonclient',msg =>{
-//     console.log('client changed');
-// });
-
-// socket.on('broadcast',function(data) {
-//     // document.body.innerHTML = '';
-//     // document.write(data.description);
-//     console.log("hlo");
-//  });
