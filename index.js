@@ -2,6 +2,7 @@
 const { v4: uuidv4 } = require('uuid');
 var bodyParser = require('body-parser');
 const express = require('express');
+const { connected } = require('process');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -41,12 +42,13 @@ app.get('/:roomid',(req,res) => {
 
 io.on("connection",(socket) => {
   console.log("connected with io");
-  socket.on('joinRoom',({username,roomid})=>{
-    socket.join(roomid);
-    console.log(`${username} has joined`);
-  })
+  // socket.on('joinRoom',({username,roomid})=>{
+  //   socket.join(roomid);
+  //   console.log(`${username} has joined`);
+  // })
   socket.on('clientEvent', function(data) {
     console.log(data);
+    console.log("inside play button")
     io.sockets.emit('playonall',{msg:"playing on all client"});
   });
 
